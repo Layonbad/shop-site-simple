@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 import './Shop.css'
 import Product from "../product/Product";
+import {Link} from 'react-router-dom';
 import {addToDb, getStoredCart} from "../../utilities/fakeDb";
 import Cart from "../cart/Cart";
-import {Link} from "react-router-dom";
 
 
 const Shop = () => {
@@ -42,7 +42,7 @@ const Shop = () => {
       .then(res => res.json())
       .then(() => {
         for (const id in storedCart) {
-          const addedProduct = products.find(product => product._id === id);
+          const addedProduct = products.find(product => product.id === id);
           if (addedProduct) {
             const quantity = storedCart[id];
             addedProduct.quantity = quantity;
@@ -55,12 +55,12 @@ const Shop = () => {
 
   const handleAddToCart = (selectedProduct) => {
     let newCart;
-    const exists = cart.find(product => product._id === selectedProduct._id);
+    const exists = cart.find(product => product.id === selectedProduct.id);
     if (!exists) {
       selectedProduct.quantity = 1;
       newCart = [...cart, selectedProduct];
     } else {
-      const rest = cart.filter(product => product._id === selectedProduct._id);
+      const rest = cart.filter(product => product.id === selectedProduct.id);
       exists.quantity = exists.quantity + 1;
       newCart = [...rest, exists];
     }
@@ -73,7 +73,7 @@ const Shop = () => {
       <div className='products-container'>
         {
           products.map(product => <Product
-            key={product._id}
+            key={product.id}
             product={product}
             handleAddToCart={handleAddToCart}
           ></Product>)

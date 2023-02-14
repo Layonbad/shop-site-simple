@@ -6,15 +6,15 @@ import Login from "./components/login/Login";
 import Orders from "./components/orders/Orders";
 import SignUp from "./components/signUp/SignUp";
 import PrivateRoute from "./routes/PrivateRoutes";
-import {Inventory} from "@mui/icons-material";
 import Shipping from "./components/shipping/Shipping";
+import {productsAndCartLoader} from './loader/ProductsAndCartLoader';
+import Main from "./layouts/Main";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      // TODO add
-      //element: <Main></Main>,
+      element: <Main></Main>,
       children: [
         {
           path: '/',
@@ -23,13 +23,8 @@ function App() {
         },
         {
           path: '/orders',
-          // TODO add
-          //loader: productsAndCarLoader,
+          loader: productsAndCartLoader,
           element: <Orders></Orders>
-        },
-        {
-          path: '/inventory',
-          element: <PrivateRoute><Inventory></Inventory></PrivateRoute>
         },
         {
           path: '/shipping',

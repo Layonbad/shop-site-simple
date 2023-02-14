@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import 'Header.css'
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
-import {Link} from "@mui/icons-material";
+import {Link} from 'react-router-dom';
 import {AuthContext} from "../../contexts/UserContexts";
 
 
@@ -11,10 +11,9 @@ const Header = () => {
     <nav className='header'>
       <img src={AirportShuttleIcon} alt=""/>
       <div>
-        <a href="/shop">Shop</a>
-        <a href="/orders">Orders</a>
-        <a href="/inventory">Inventory</a>
-        <a href="/about">About</a>
+        <Link to="/shop">Shop</Link>
+        <Link to="/orders">Orders</Link>
+        <Link to="/about">About</Link>
         {
           user?.uid ?
             <button className='btn-logout' onClick={logOut}>Log out</button>

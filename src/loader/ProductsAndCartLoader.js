@@ -10,12 +10,12 @@ export const productsAndCartLoader = async () => {
   const initialCart = [];
 
   for (const id in savedCart) {
-    const addedProduct = products.find(product => product._id);
+    const addedProduct = products.find(product => product.id);
     if (addedProduct) {
       const quantity = savedCart[id];
       addedProduct.quantity = quantity;
       initialCart.push(addedProduct);
     }
   }
-  return {products: products, initialCart: initialCart};
+  return {products, initialCart};
 }
