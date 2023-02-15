@@ -1,5 +1,4 @@
 import {useContext} from "react";
-import {throws} from "assert";
 import {Link, useLocation, useNavigate} from 'react-router-dom';
 import {AuthContext} from "../../contexts/UserContexts";
 
@@ -20,7 +19,7 @@ const Login = () => {
         form.reset();
         navigate(from, {replace: true});
       })
-      .catch(error => throws(error));
+      .catch(error => console.error(error));
   }
   return (
     <div>

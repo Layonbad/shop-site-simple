@@ -1,5 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
-import firebase from "firebase/compat";
+import * as firebase from "firebase/app";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -36,7 +36,7 @@ const UserContext = ({children}) => {
       setLoading(false);
     });
     return () => unsubscribe();
-  }, [])
+  }, [setLoading, setUser])
 
   const authInfo = {user, loading, createUser, signIn, logOut}
 
