@@ -1,5 +1,6 @@
-import firebase from "firebase/compat";
-import "firebase/firestore";
+import firebase from "firebase/compat/app";
+import "firebase/compat/firestore";
+import 'firebase/compat/auth';
 
 // web apps firebase config
 const firebaseConfig = {
@@ -11,6 +12,5 @@ const firebaseConfig = {
   appId: "1:1068109486526:web:f8e95af4d355812732c1ef"
 };
 
-firebase.initializeApp(firebaseConfig);
-
-export default firebase;
+const app = firebase.initializeApp(firebaseConfig);
+export default app;
